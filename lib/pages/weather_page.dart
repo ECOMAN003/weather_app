@@ -35,26 +35,26 @@ class _WeatherPageState extends State<WeatherPage> {
   //weather animations
   String getWeatherAnimation(String? mainCondition) {
     if (mainCondition == null) return 'assets/sunny.json'; //default animation
-
+   
     switch (mainCondition) {
-      case 'clouds':
-      case 'mist':
-      case 'smoke':
-      case 'haze':
-      case 'dust':
-      case 'fog':
+      case 'Clouds':
+      case 'Mist':
+      case 'Smoke':
+      case 'Haze':
+      case 'Dust':
+      case 'Fog':
         return 'assets/cloud.json';
-      case 'rain':
+      case 'Rain':
         return 'assets/rain.json';
-      case 'drizzle':
-      case 'shower rain':
+      case 'Drizzle':
+      case 'Shower Rain':
         return 'assets/rain.json';
-      case 'thunderstorm':
+      case 'Thunderstorm':
         return 'assets/thunder.json';
-      case 'clear':
+      case 'Clear':
         return 'assets/sun.json';
       default:
-        return 'assets/sun.json';
+        return 'assets/sunny.json';
     }
   }
 
@@ -78,11 +78,16 @@ class _WeatherPageState extends State<WeatherPage> {
               const SizedBox(
                 height: 60.0,
               ),
-              const Icon(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
                 Icons.location_on,
-                size: 30.0,
+                size: 60.0,
                 color: Colors.black26,
               ),
+
+              // const SizedBox(width: 10.0),
 
               //city name
               Text(
@@ -91,6 +96,8 @@ class _WeatherPageState extends State<WeatherPage> {
                     fontSize: 60.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.black45),
+              ),
+                ],
               ),
 
               //animation
@@ -115,7 +122,7 @@ class _WeatherPageState extends State<WeatherPage> {
                     ),
                   ),
                   const SizedBox(
-                    width: 30.0,
+                    width: 10.0,
                   ),
                   //weather condition
                   Text(
@@ -129,7 +136,9 @@ class _WeatherPageState extends State<WeatherPage> {
                 ],
               ),
 
-              const SizedBox(height: 40.0,)
+              const SizedBox(
+                height: 40.0,
+              )
             ],
           ),
         ),
