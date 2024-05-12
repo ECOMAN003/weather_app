@@ -34,7 +34,7 @@ class _WeatherPageState extends State<WeatherPage> {
 
   //weather animations
   String getWeatherAnimation(String? mainCondition) {
-    if (mainCondition == null) return 'assets/sunny.json'; //default animation
+    if (mainCondition == null) return 'assets/loading.json'; //default animation
 
     switch (mainCondition) {
       case 'clouds':
@@ -103,7 +103,7 @@ class _WeatherPageState extends State<WeatherPage> {
               ),
             ),
             //weather condition
-            Text(_weather?.mainCondition ?? "")
+            Text(_weather?.mainCondition ?? "LOADING CONDITION")
           ],
         ),
       ),
