@@ -34,26 +34,27 @@ class _WeatherPageState extends State<WeatherPage> {
 
   //weather animations
   String getWeatherAnimation(String? mainCondition) {
-    if (mainCondition == null) return 'assets/loading.json'; //default animation
-
+    if (mainCondition == null) return 'assets/sunny.json'; //default animation
+   
     switch (mainCondition) {
-      case 'clouds':
-      case 'mist':
-      case 'smoke':
-      case 'haze':
-      case 'dust':
-      case 'fog':
+      case 'Clouds':
+      case 'Mist':
+      case 'Smoke':
+      case 'Haze':
+      case 'Dust':
+      case 'Fog':
         return 'assets/cloud.json';
-      case 'rain':
-      case 'drizzle':
-      case 'shower rain':
+      case 'Rain':
         return 'assets/rain.json';
-      case 'thunderstorm':
+      case 'Drizzle':
+      case 'Shower Rain':
+        return 'assets/rain.json';
+      case 'Thunderstorm':
         return 'assets/thunder.json';
-      case 'clear':
+      case 'Clear':
         return 'assets/sun.json';
       default:
-        return 'assets/sun.json';
+        return 'assets/sunny.json';
     }
   }
 
@@ -68,26 +69,36 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.location_on,
-            size: 18.0,
-            color: Colors.black26,
-            ),
-            const SizedBox(height: 5.0,),
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 60.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                Icons.location_on,
+                size: 60.0,
+                color: Colors.black26,
+              ),
 
-            //city name
-            Text(_weather?.cityName ?? "loading city...",
-            style: GoogleFonts.bebasNeue(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.black45
-            ),
-            ),
-            const SizedBox(height: 150.0,),
+              // const SizedBox(width: 10.0),
+
+              //city name
+              Text(
+                _weather?.cityName ?? "loading city...",
+                style: GoogleFonts.bebasNeue(
+                    fontSize: 60.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black45),
+              ),
+                ],
+              ),
 
             //animation
             Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
